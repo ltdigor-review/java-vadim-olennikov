@@ -2,13 +2,12 @@ package org.example.service;
 
 
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.dto.UpdateUserRecord;
 import org.example.dto.UserRecord;
 import org.example.entity.UserEntity;
 import org.example.repository.UserRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -16,15 +15,12 @@ import java.util.UUID;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserKafkaProducer userKafkaProducer;
     private final UserRepository userRepository;
 
-    public UserService(UserKafkaProducer userKafkaProducer, UserRepository userRepository) {
-        this.userKafkaProducer = userKafkaProducer;
-        this.userRepository = userRepository;
-    }
 
     public UserRecord createUser(UserRecord userRecord) {
 
