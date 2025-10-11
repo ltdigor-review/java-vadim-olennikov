@@ -4,7 +4,7 @@ package org.example.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.example.entity.User;
+import org.example.entity.UserEntity;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
@@ -18,17 +18,17 @@ import java.util.Map;
 @Configuration
 public class KafkaProducerConfig {
     @Bean
-    public ProducerFactory<String, User> producerFactory(ObjectMapper objectMapper) {
+    public ProducerFactory<String, UserEntity> producerFactory(ObjectMapper objectMapper) {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        JsonSerializer<User> serializer = new JsonSerializer<User>(objectMapper);
+        JsonSerializer<UserEntity> serializer = new JsonSerializer<UserEntity>(objectMapper);
         serializer.setAddTypeInfo(false);
 
         return new DefaultKafkaProducerFactory<>(configProps, new StringSerializer(), serializer);
     }
 
     @Bean
-    public KafkaTemplate<String, User> kafkaTemplate(ProducerFactory<String, User> producerFactory) {
+    public KafkaTemplate<String, UserEntity> kafkaTemplate(ProducerFactory<String, UserEntity> producerFactory) {
         return new KafkaTemplate<>(producerFactory);
     }
 }

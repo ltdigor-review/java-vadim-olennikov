@@ -3,17 +3,19 @@ package org.example.service;
 
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
+import org.example.dto.UpdateUserRecord;
 import org.example.dto.UserRecord;
-import org.example.entity.User;
+import org.example.entity.UserEntity;
 import org.example.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-@Slf4j
+import java.util.Objects;
+import java.util.UUID;
 
+@Slf4j
 @Service
-@Transactional
 public class UserService {
 
     private final UserKafkaProducer userKafkaProducer;
@@ -24,37 +26,34 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    /**
-     * Create user.
-     *
-     * @param userRecord DTO for user.
-     * @return RE<UserRecord>, status code.
-     */
-    public ResponseEntity<UserRecord> createUser(UserRecord userRecord) {
+    public UserRecord createUser(UserRecord userRecord) {
 
-        if (userRecord == null) {
-            throw new IllegalArgumentException("userRecord is null");
-        }
+        Objects.requireNonNull(userRecord);
 
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setName(userRecord.name());
 
         userRepository.save(user);
         userKafkaProducer.sendMessageToKafkaByCreateUser(user);
-
-        return new ResponseEntity<>(userRecord, HttpStatus.CREATED);
+        return userRecord;
     }
 
-    public ResponseEntity<UserRecord> updateUser(Long currentUserId, Long newUserId) {
-        if (currentUserId == null || newUserId == null) {
+    @Transactional
+    public UserRecord updateUser(UUID currentUserId, UpdateUserRecord updateUserRecord) {
+        if (currentUserId == null || updateUserRecord.name() == null) {
             throw new IllegalArgumentException("User or new user is null");
         }
-        User currentUser = userRepository
-                .findById(currentUserId)
-                .orElseThrow(() -> new IllegalArgumentException("User not found with id: " + currentUserId));
 
-        userRepository.updateUserId(currentUserId, newUserId);
+        UserEntity currentUser = userRepository
+                .findBByUuid(currentUserId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found with id: " + currentUserId));
+        System.out.println(currentUser);
+        currentUser.setName(updateUserRecord.name());
+        System.out.println(currentUser);
+
+        UserRecord userRecord = new UserRecord(currentUser.getName());
+
         userKafkaProducer.sendMessageToKafkaByChangeUser(currentUser);
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        return  userRecord;
     }
 }
