@@ -15,7 +15,8 @@ build/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-amplicode-*
+amplicode-jpa.xml
+amplicode-settings.xml
 
 ### Eclipse ###
 .apt_generated
