@@ -9,14 +9,15 @@ build/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/amplicode-jpa.xml
+.idea/amplicode-settings.xml
 *.iws
 *.iml
 *.ipr
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-amplicode-jpa.xml
-amplicode-settings.xml
+
 
 ### Eclipse ###
 .apt_generated
