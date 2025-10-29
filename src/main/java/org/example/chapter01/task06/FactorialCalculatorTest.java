@@ -3,6 +3,7 @@ package org.example.chapter01.task06;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigInteger;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -26,5 +27,10 @@ public class FactorialCalculatorTest {
         BigInteger actual = FactorialCalculator.factorial(n);
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void failedTest() {
+        assertEquals(1, 2);
     }
 }
