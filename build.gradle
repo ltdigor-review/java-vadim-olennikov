@@ -23,6 +23,9 @@ spotless {
 }
 
 test {
+    testClassesDirs += sourceSets.main.output.classesDirs
+    classpath += sourceSets.main.runtimeClasspath
+
     useJUnitPlatform()
 }
 

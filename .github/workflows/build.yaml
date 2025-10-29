@@ -1,4 +1,4 @@
-name: CI - Spotless & Tests
+name: CI on pull request
 
 on:
   push:
