@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'jacoco'
     id 'com.diffplug.spotless' version '8.0.0'
+    id 'checkstyle'
 }
 
 jacoco {
@@ -24,6 +25,18 @@ dependencies {
 spotless {
     java {
         palantirJavaFormat()
+        forbidWildcardImports()
+    }
+}
+
+
+checkstyle {
+    toolVersion = '11.0.1'
+}
+
+tasks.withType(Checkstyle).configureEach {
+    reports {
+        html.required = true
     }
 }
 
@@ -62,6 +75,7 @@ test {
 
 build {
     dependsOn spotlessApply
+    dependsOn check
     dependsOn jacocoTestReport
     dependsOn jacocoTestCoverageVerification
 }
