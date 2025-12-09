@@ -75,7 +75,5 @@ test {
 
 build {
     dependsOn spotlessCheck
-    dependsOn check
-    dependsOn jacocoTestReport
-    dependsOn jacocoTestCoverageVerification
 }
+check.finalizedBy jacocoTestReport, jacocoTestCoverageVerification
