@@ -8,6 +8,13 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class FactorialCalculatorTest {
 
+    /**
+     * JUnit автоматически преобразует строку в объект при выполнении определенных условий.<br>
+     * Подробнее:
+     * <a href="https://docs.junit.org/current/user-guide/#writing-tests-parameterized-tests-argument-conversion-implicit">
+     * Implicit Argument Conversion in Parameterized Tests
+     * </a>.
+     */
     @ParameterizedTest
     @CsvSource({
         "0, 1",
@@ -20,11 +27,8 @@ public class FactorialCalculatorTest {
         "20, 2432902008176640000",
         "25, 15511210043330985984000000"
     })
-    void factorialTest(int n, String expectedStr) {
-        BigInteger expected = new BigInteger(expectedStr);
-
+    void factorialTest(int n, BigInteger expected) {
         BigInteger actual = FactorialCalculator.factorial(n);
-
         assertEquals(expected, actual);
     }
 }
