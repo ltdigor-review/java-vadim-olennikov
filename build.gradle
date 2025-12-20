@@ -34,6 +34,15 @@ checkstyle {
     toolVersion = '11.0.1'
 }
 
+pmd {
+    ignoreFailures = false
+    consoleOutput = true
+    toolVersion = "7.19.0"
+    threads = 2
+    ruleSetFiles = files("config/pmd/pmd-ruleset.xml")
+    ruleSets = [] // disable default rules
+}
+
 tasks.withType(Checkstyle).configureEach {
     reports {
         html.required = true
