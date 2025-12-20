@@ -6,7 +6,7 @@ import java.math.BigInteger;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-public class FactorialCalculatorTest {
+class FactorialCalculatorTest {
 
     /**
      * JUnit автоматически преобразует строку в объект при выполнении определенных условий.<br>

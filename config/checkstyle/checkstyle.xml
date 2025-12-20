@@ -298,7 +298,7 @@
             <property name="max" value="2"/>
         </module>
         <!--<module name="NoArrayTrailingComma"/>-->
-        <!--<module name="NoEnumTrailingComma"/>-->
+        <module name="NoEnumTrailingComma"/>
         <module name="NoClone"/>
         <module name="NoFinalizer"/>
         <module name="OneStatementPerLine"/>
@@ -318,8 +318,8 @@
         <!-- <module name="UnnecessarySemicolonInEnumeration"/> -->
         <!-- <module name="UnnecessarySemicolonInTryWithResources"/> -->
         <!-- <module name="UnnecessarySemicolonAfterOuterTypeDeclaration"/> -->
-        <!-- <module name="UnusedLocalVariable"/> -->
-        <!-- <module name="VariableDeclarationUsageDistance"/> -->
+         <module name="UnusedLocalVariable"/>
+         <module name="VariableDeclarationUsageDistance"/>
 
         <!-- https://checkstyle.org/config_design.html -->
         <!--       Checks for class design             -->
@@ -337,7 +337,7 @@
         <module name="MutableException"/>
         <module name="OneTopLevelClass"/>
         <!-- <module name="ThrowsCount"/> -->
-        <!-- <module name="VisibilityModifier"/> -->
+         <module name="VisibilityModifier"/>
 
 
         <!-- Miscellaneous other checks.                   -->

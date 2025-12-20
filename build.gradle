@@ -3,6 +3,7 @@ plugins {
     id 'jacoco'
     id 'com.diffplug.spotless' version '8.0.0'
     id 'checkstyle'
+    id 'pmd'
 }
 
 jacoco {
@@ -32,6 +33,15 @@ spotless {
 
 checkstyle {
     toolVersion = '11.0.1'
+}
+
+pmd {
+    ignoreFailures = false
+    consoleOutput = true
+    toolVersion = "7.19.0"
+    threads = 2
+    ruleSetFiles = files("config/pmd/pmd-ruleset.xml")
+    ruleSets = [] // disable default rules
 }
 
 tasks.withType(Checkstyle).configureEach {
