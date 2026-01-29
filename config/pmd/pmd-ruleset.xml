@@ -13,4 +13,12 @@
     </rule>
     <rule ref="category/java/multithreading.xml"/>
     <rule ref="category/java/performance.xml"/>
+    <rule ref="category/java/codestyle.xml">
+        <exclude name="ShortClassName"/>
+        <exclude name="MethodArgumentCouldBeFinal"/>
+        <exclude name="AtLeastOneConstructor"/>
+        <exclude name="ShortVariable"/>
+        <exclude name="OnlyOneReturn"/>
+        <exclude name="UseExplicitTypes"/>
+    </rule>
 </ruleset>
