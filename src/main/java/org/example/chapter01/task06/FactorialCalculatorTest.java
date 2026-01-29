@@ -28,7 +28,7 @@ class FactorialCalculatorTest {
         "25, 15511210043330985984000000"
     })
     void factorialTest(int n, BigInteger expected) {
-        BigInteger actual = FactorialCalculator.factorial(n);
+        final var actual = FactorialCalculator.factorial(n);
         assertEquals(expected, actual);
     }
 }

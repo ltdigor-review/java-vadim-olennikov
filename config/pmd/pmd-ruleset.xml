@@ -19,5 +19,6 @@
         <exclude name="AtLeastOneConstructor"/>
         <exclude name="ShortVariable"/>
         <exclude name="OnlyOneReturn"/>
+        <exclude name="UseExplicitTypes"/>
     </rule>
 </ruleset>
