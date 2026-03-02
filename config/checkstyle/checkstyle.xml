@@ -407,7 +407,7 @@
         <module name="SuppressWithNearbyCommentFilter"/>
     </module>
     <module name="RegexpMultiline">
-        <property name="message" value="Blank line at start of method should be removed"/>
+        <property name="message" value="The blank line after the method signature must be deleted"/>
         <property name="format" value="\(.*\)\s*\{\s*\n\s*\n"/>
     </module>
 </module>
