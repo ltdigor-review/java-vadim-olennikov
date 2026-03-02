@@ -32,7 +32,7 @@ spotless {
 
 
 checkstyle {
-    toolVersion = '11.0.1'
+    toolVersion = '13.3.0'
 }
 
 pmd {

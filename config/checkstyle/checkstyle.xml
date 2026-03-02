@@ -332,6 +332,10 @@
             <property name="checks" value="MagicNumber"/>
             <property name="files" value=".*(Test|test)\.java$"/>
         </module>
+        <module name="SuppressionXpathSingleFilter">
+            <property name="checks" value="VisibilityModifier"/>
+            <property name="query" value="//*[MODIFIERS//*[@text = 'Value' or @text = 'Data' or @text = 'Getter' or @text = 'Setter']]/descendant-or-self::node()"/>
+        </module>
         <module name="InnerTypeLast"/>
         <!--<module name="InterfaceIsType"/>-->
         <module name="MutableException"/>
