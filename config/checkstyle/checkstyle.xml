@@ -334,7 +334,7 @@
         </module>
         <module name="SuppressionXpathSingleFilter">
             <property name="checks" value="MultipleStringLiterals"/>
-            <property name="files" value=".*(Test|test)\.java$"/>
+            <property name="files" value=".*(Test|test|Controller)\.java$"/>
         </module>
         <module name="SuppressionXpathSingleFilter">
             <property name="checks" value="VisibilityModifier"/>
